@@ -26,18 +26,23 @@ limitations under the License.
 
 ## Table of content
 
+- [Structure](#structure)
 - [Domain-specific language](#dsl)
 - [Thanks](#thanks)
 
+## <a id="structure"> Structure
+
+<img src="./docs/drawio/debris-structure.svg"  width="1200">
+
 ## <a id="dsl"> Domain-specific language
 
-<img src="./docs/drawio/debris-dsl.svg"  width="1000">
+<img src="./docs/drawio/debris-dsl.svg"  width="1200">
 
 ```kotlin
 startDebris {               // this: DebrisApplication
     module {                // this: Module
         single {            // this: Debris
-            HelloSayer() 
+            MockClass() as BaseClass
         }
     }
     ...
