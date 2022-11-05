@@ -3,6 +3,7 @@ package co.ab180.debris.core
 import co.ab180.debris.core.definition.DebrisDefinition
 import co.ab180.debris.core.definition.DebrisProperties
 import co.ab180.debris.core.definition.IndexKey
+import co.ab180.debris.core.exception.throwDebrisException
 import co.ab180.debris.core.module.Module
 import kotlin.reflect.KClass
 
@@ -28,7 +29,7 @@ class Debris {
                 properties[indexKey] = definitions[indexKey]?.definition?.invoke(this) as T
             }
             return properties[indexKey]
-        } else { error("[DEBRIS] '${clazz.qualifiedName}' not found") }
+        } else { throwDebrisException("'${clazz.qualifiedName}' not found") }
     }
 
     internal fun loadModules(modules: Iterable<Module>) {
@@ -41,7 +42,7 @@ class Debris {
 
     private fun saveDefinition(definition: DebrisDefinition<*>) {
         if (definitions.containsValue(definition)) {
-            error("[DEBRIS] Definition '$definition' try to override existing definition.")
+            throwDebrisException("Definition '$definition' try to override existing definition.")
         }
         val indexKey: IndexKey = definition.primaryType.qualifiedName ?: ""
         if (indexKey.isNotEmpty()) { definitions[indexKey] = definition }

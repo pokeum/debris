@@ -3,6 +3,7 @@ package co.ab180.debris.core.module
 import co.ab180.debris.core.definition.DebrisDefinition
 import co.ab180.debris.core.definition.Definition
 import co.ab180.debris.core.definition.Definitions
+import co.ab180.debris.core.exception.throwDebrisException
 
 class Module {
 
@@ -21,7 +22,5 @@ class Module {
 
 fun HashSet<DebrisDefinition<*>>.addDefinition(definition : DebrisDefinition<*>) {
     val added = add(definition)
-    if (!added) {
-        error("[DEBRIS] Definition '$definition' try to override existing definition.")
-    }
+    if (!added) { throwDebrisException("Definition '$definition' try to override existing definition.") }
 }

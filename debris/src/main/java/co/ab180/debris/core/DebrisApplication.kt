@@ -1,5 +1,6 @@
 package co.ab180.debris.core
 
+import co.ab180.debris.core.exception.throwDebrisException
 import co.ab180.debris.core.module.Module
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -20,7 +21,7 @@ class DebrisApplication private constructor() {
         if (!isModuleLoaded.getAndSet(true)) {
             debris.loadModules(modules)
             return this
-        } else { error("[DEBRIS] module(s) already loaded!") }
+        } else { throwDebrisException("module(s) already loaded!") }
     }
 
     companion object {

@@ -4,9 +4,8 @@ import co.ab180.debris.core.Debris
 import kotlin.reflect.KClass
 
 data class DebrisDefinition<T>(
-    val primaryType: KClass<*>,         // Type
-    val definition: Definition<T>,      // Value
-    //val superTypes: HashSet<String> = hashSetOf()
+    val primaryType: KClass<*>,
+    val definition: Definition<T>,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

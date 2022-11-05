@@ -1,5 +1,6 @@
 package co.ab180.debris.core.definition
 
+import co.ab180.debris.core.exception.throwDebrisException
 import java.util.concurrent.ConcurrentHashMap
 
 class DebrisProperties(private val data: MutableMap<String, Any> = ConcurrentHashMap()) {
@@ -11,6 +12,6 @@ class DebrisProperties(private val data: MutableMap<String, Any> = ConcurrentHas
 
     @Suppress("UNCHECKED_CAST")
     operator fun <T> get(key: String): T {
-        return data[key] as? T ?: throw IllegalArgumentException("[DEBRIS] missing property for '$key'")
+        return data[key] as? T ?: throwDebrisException("missing property for '$key'")
     }
 }
