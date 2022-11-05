@@ -27,7 +27,7 @@ object DebrisContext {
         debris = debrisApplication.debris
     }
 
-    fun startDebris(appDeclaration: DebrisAppDeclaration): DebrisApplication = synchronized(this) {
+    internal fun startDebris(appDeclaration: DebrisAppDeclaration): DebrisApplication = synchronized(this) {
         val debrisApplication = DebrisApplication.init()
         register(debrisApplication)
         appDeclaration(debrisApplication)
