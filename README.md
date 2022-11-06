@@ -1,3 +1,5 @@
+![logo](./docs/icon/Debris.png)
+
 # Debris
 
 Debris is `light-weight` Kotlin dependency injection library.    
