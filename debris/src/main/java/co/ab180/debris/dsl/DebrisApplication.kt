@@ -7,7 +7,7 @@ typealias DebrisAppDeclaration = DebrisApplication.() -> Unit
 /**
  * Create a DebrisApplication instance and help configure it
  */
-fun DebrisApplication(appDeclaration: DebrisAppDeclaration? = null): DebrisApplication {
+fun debrisApplication(appDeclaration: DebrisAppDeclaration? = null): DebrisApplication {
     val debrisApplication = DebrisApplication.init()
     appDeclaration?.invoke(debrisApplication)
     return debrisApplication

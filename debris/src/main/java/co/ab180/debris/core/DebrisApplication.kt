@@ -17,7 +17,7 @@ class DebrisApplication private constructor() {
 
     fun modules(vararg modules: Module): DebrisApplication { return modules(modules.toList()) }
 
-    private fun modules(modules: List<Module>): DebrisApplication {
+    fun modules(modules: List<Module>): DebrisApplication {
         if (!isModuleLoaded.getAndSet(true)) {
             debris.loadModules(modules)
             return this
