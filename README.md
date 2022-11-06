@@ -34,7 +34,12 @@ limitations under the License.
 - [Structure](#structure)
 - [Domain-specific language](#dsl)
 - [Getting started](#getting-started)
-- [Examples](#examples)
+- [Documentation](#documentation)
+  - [Start Debris](#start-debris)
+  - [Debris Component (Java)](#debris-component)
+  - [Resolving instance from Debris](#resolving-instance-from-debris)
+  - [Passing Parameters - Injected Parameters](#passing-parameters)
+  - [Injecting in Tests](#injecting-in-tests)
 - [Thanks](#thanks)
 
 ## <a id="structure"> Structure
@@ -56,16 +61,163 @@ limitations under the License.
 startDebris {               // this: DebrisApplication
     module {                // this: Module
         single {            // this: Debris
-            DerivedClass() as BaseClass
+            SomeClass()
         }
     }
-    ...
 }
 ```
 
 ## <a id="getting-started"> Getting started
 
-## <a id="examples"> Examples
+## <a id="documentation"> Documentation
+
+* ## <a id="start-debris"> Start Debris
+
+    ### The startDebris function
+    The startDebris function is the main entry point to launch Debris container. It needs a list of Debris modules to run.
+    Modules are loaded and definitions are ready to be resolved by the Debris container
+    > **Warning**<br/>
+    > **The `modules` function needs to called only once inside of the startDebris function**
+
+    ```kotlin
+    // start a DebrisApplication in Debris(Global) context
+    startDebris {
+        // declare used modules
+        modules(airbridgeModule)
+    }
+    ```
+
+    #### <!-- The debrisApplication function (Not Recommended) -->
+    <details>
+    <summary><b>The debrisApplication function (Not Recommended)</b></summary>
+
+    ```kotlin
+    // declare a DebrisApplication
+    val debrisApplication = debrisApplication {
+        // declare used modules
+        modules(airbridgeModule)
+    }
+    // start a DebrisApplication in Debris(Global) context
+    DebrisContext.register(debrisApplication)
+    ```
+
+    </details>
+
+* ## <a id="debris-component"> Debris Component (Java)
+
+    Debris components helps to retrieve our instances outside of the container. Let's take an example.
+    
+    A module to define Deeplinker instance
+
+    ```kotlin
+    class Deeplinker
+
+    val airbridgeModule = module {
+        // Define a singleton for Deeplinker
+        single { Deeplinker() }
+    }
+    ```
+
+    we start Debris before using definition.
+        
+    Start Debris with airbridgeModule
+
+    ```kotlin
+    fun init(app: Application, config: AirbridgeConfig) {
+        // Start Debris
+        startDebris {
+            modules(airbridgeModule)
+        }
+
+        // Create Tracker instance and inject from Debris container
+        Tracker()
+    }
+    ```
+  
+    Here is how we can write our Tracker to retrieve instances from Debris container.
+        
+    Use get() & by inject() to inject Deeplinker instance
+
+    ```kotlin
+    class Tracker {
+
+        // lazy inject Debris instance
+        private val deeplinker by inject(Deeplinker::class.java)
+
+        // or
+        // eager inject Debris instance
+        private val deeplinker = get(Deeplinker::class.java)
+    }
+    ```
+
+* ## <a id="resolving-instance-from-debris"> Resolving instance from Debris
+
+    ```kotlin
+    // declare a Debris and start Debris
+    val debris: Debris = startDebris {
+        val airbridgeModule = module {
+            single { TrackerImpl() as Tracker }
+        }
+        modules(airbridgeModule)
+    }.debris
+  
+    // retrieve instance from Debris
+    debris.get<Tracker>().startTracking()
+    ```
+
+* ## <a id="passing-parameters"> Passing Parameters - Injected Parameters
+
+    Just use the usual `get()` function
+
+    ```kotlin
+    class DeviceInfoImpl(
+        private val context: Context
+    ) : DeviceInfo { }
+    
+    // Start Debris
+    startDebris {
+        val androidModule = module {
+            single { app }
+            single { app as Context }
+        }
+        val scrapperModule = module {
+            single { DeviceInfoImpl(get()) as DeviceInfo }
+        }
+        modules(androidModule, scrapperModule)
+    }
+    ```
+
+* ## <a id="injecting-in-tests"> Injecting in Tests
+
+    ```kotlin
+    class SomeTest {
+
+        @Before
+        fun setUp() {
+            // Start Debris
+            startDebris {
+                val airbridgeModule = module {
+                    single { Deeplinker() }
+                    single { MockEventHandler() as EventHandler }
+                    single { TrackerImpl() as Tracker }
+                }
+                modules(airbridgeModule)
+            }
+        }
+
+        @After
+        fun tearDown() {
+            // Stop Debris
+            stopDebris()
+        }
+
+        @Test
+        fun testCaseA() { /* testing case A */ }
+
+        @Test
+        fun testCaseB() { /* testing case B */ }
+    }
+    ```
 
 ## <a id="thanks"> Thanks
 * [Koin](https://github.com/InsertKoinIO/koin)
