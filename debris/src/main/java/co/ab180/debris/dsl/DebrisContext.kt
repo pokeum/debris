@@ -9,3 +9,8 @@ import co.ab180.debris.core.DebrisContext
 fun startDebris(appDeclaration: DebrisAppDeclaration): DebrisApplication {
     return DebrisContext.startDebris(appDeclaration)
 }
+
+/**
+ * Stop current StandAlone Debris application
+ */
+fun stopDebris() = DebrisContext.stop()
