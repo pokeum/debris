@@ -40,6 +40,7 @@ limitations under the License.
   - [Resolving instance from Debris](#resolving-instance-from-debris)
   - [Passing Parameters - Injected Parameters](#passing-parameters)
   - [Injecting in Tests](#injecting-in-tests)
+- [Benefits of using Debris](#benefits)
 - [Thanks](#thanks)
 
 ## <a id="structure"> Structure
@@ -218,6 +219,21 @@ startDebris {               // this: DebrisApplication
         fun testCaseB() { /* testing case B */ }
     }
     ```
+
+## <a id="benefits"> Benefits of using Debris
+
+<table>
+  <tr>
+    <td>3rd party library size</td>
+    <td>Airbridge SDK size</td>
+  </tr>
+  <tr>
+    <td><img src="./docs/ScreenShots/library-size.png"  width="450"></td>
+    <td><img src="./docs/ScreenShots/airbridge-size.png"  width="450"></td>
+  </tr>
+ </table>
+
+:coffee: [io.insert-koin:koin-core:2.2.2](https://search.maven.org/search?q=g:io.insert-koin%20AND%20a:koin-core%20AND%20v:2.2.2)
 
 ## <a id="thanks"> Thanks
 * [Koin](https://github.com/InsertKoinIO/koin)
