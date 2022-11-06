@@ -24,15 +24,29 @@ limitations under the License.
 
 **Strongly recommend to use Koin instead of Debris**
 
+> **Note**
+> * Debris does not support Dynamic Modules. (e.g. loadModules, unloadModules)
+> * Debris does not support Context Isolation. (**Support `Global Context` Only**)
+> * Debris does not support Scope.
+
 ## Table of content
 
 - [Structure](#structure)
 - [Domain-specific language](#dsl)
+- [Getting started](#getting-started)
+- [Examples](#examples)
 - [Thanks](#thanks)
 
 ## <a id="structure"> Structure
 
 <img src="./docs/drawio/debris-structure.svg"  width="1200">
+
+> **Note**<br/>
+> **`DebrisContext` is Global Context**
+
+### How User Interface Works?
+
+<img src="./docs/drawio/debris-user-interface.svg"  width="1200">
 
 ## <a id="dsl"> Domain-specific language
 
@@ -42,12 +56,16 @@ limitations under the License.
 startDebris {               // this: DebrisApplication
     module {                // this: Module
         single {            // this: Debris
-            MockClass() as BaseClass
+            DerivedClass() as BaseClass
         }
     }
     ...
 }
 ```
+
+## <a id="getting-started"> Getting started
+
+## <a id="examples"> Examples
 
 ## <a id="thanks"> Thanks
 * [Koin](https://github.com/InsertKoinIO/koin)
