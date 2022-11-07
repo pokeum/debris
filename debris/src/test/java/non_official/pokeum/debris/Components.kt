@@ -1,4 +1,4 @@
-package co.ab180.debris
+package non_official.pokeum.debris
 
 class Simple {
     class ComponentA

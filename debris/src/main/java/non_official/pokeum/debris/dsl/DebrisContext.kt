@@ -1,7 +1,7 @@
-package co.ab180.debris.dsl
+package non_official.pokeum.debris.dsl
 
-import co.ab180.debris.core.DebrisApplication
-import co.ab180.debris.core.DebrisContext
+import non_official.pokeum.debris.core.DebrisApplication
+import non_official.pokeum.debris.core.DebrisContext
 
 /**
  * Start a Debris Application as StandAlone

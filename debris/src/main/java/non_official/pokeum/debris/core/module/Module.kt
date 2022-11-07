@@ -1,9 +1,9 @@
-package co.ab180.debris.core.module
+package non_official.pokeum.debris.core.module
 
-import co.ab180.debris.core.definition.DebrisDefinition
-import co.ab180.debris.core.definition.Definition
-import co.ab180.debris.core.definition.Definitions
-import co.ab180.debris.core.exception.throwDebrisException
+import non_official.pokeum.debris.core.definition.DebrisDefinition
+import non_official.pokeum.debris.core.definition.Definition
+import non_official.pokeum.debris.core.definition.Definitions
+import non_official.pokeum.debris.core.exception.throwDebrisException
 
 class Module {
 

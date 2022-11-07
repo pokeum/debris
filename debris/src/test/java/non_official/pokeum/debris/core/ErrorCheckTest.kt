@@ -1,9 +1,9 @@
-package co.ab180.debris.core
+package non_official.pokeum.debris.core
 
-import co.ab180.debris.Errors
-import co.ab180.debris.Simple
-import co.ab180.debris.dsl.debrisApplication
-import co.ab180.debris.dsl.module
+import non_official.pokeum.debris.Errors
+import non_official.pokeum.debris.Simple
+import non_official.pokeum.debris.dsl.debrisApplication
+import non_official.pokeum.debris.dsl.module
 import org.junit.Ignore
 import org.junit.Test
 

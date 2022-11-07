@@ -1,6 +1,6 @@
-package co.ab180.debris.core.definition
+package non_official.pokeum.debris.core.definition
 
-import co.ab180.debris.core.Debris
+import non_official.pokeum.debris.core.Debris
 import kotlin.reflect.KClass
 
 data class DebrisDefinition<T>(

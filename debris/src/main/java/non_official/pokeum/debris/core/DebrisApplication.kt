@@ -1,7 +1,7 @@
-package co.ab180.debris.core
+package non_official.pokeum.debris.core
 
-import co.ab180.debris.core.exception.throwDebrisException
-import co.ab180.debris.core.module.Module
+import non_official.pokeum.debris.core.exception.throwDebrisException
+import non_official.pokeum.debris.core.module.Module
 import java.util.concurrent.atomic.AtomicBoolean
 
 class DebrisApplication private constructor() {

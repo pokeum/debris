@@ -1,7 +1,7 @@
-package co.ab180.debris.core
+package non_official.pokeum.debris.core
 
-import co.ab180.debris.core.exception.throwDebrisException
-import co.ab180.debris.dsl.DebrisAppDeclaration
+import non_official.pokeum.debris.core.exception.throwDebrisException
+import non_official.pokeum.debris.dsl.DebrisAppDeclaration
 
 object DebrisContext {
 

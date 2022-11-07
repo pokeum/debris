@@ -1,4 +1,4 @@
-package co.ab180.debris.core.definition
+package non_official.pokeum.debris.core.definition
 
 object Definitions {
 

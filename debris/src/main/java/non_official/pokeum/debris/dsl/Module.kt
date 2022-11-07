@@ -1,6 +1,6 @@
-package co.ab180.debris.dsl
+package non_official.pokeum.debris.dsl
 
-import co.ab180.debris.core.module.Module
+import non_official.pokeum.debris.core.module.Module
 
 typealias ModuleDeclaration = Module.() -> Unit
 

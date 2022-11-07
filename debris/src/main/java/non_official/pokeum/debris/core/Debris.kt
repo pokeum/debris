@@ -1,10 +1,10 @@
-package co.ab180.debris.core
+package non_official.pokeum.debris.core
 
-import co.ab180.debris.core.definition.DebrisDefinition
-import co.ab180.debris.core.definition.DebrisProperties
-import co.ab180.debris.core.definition.IndexKey
-import co.ab180.debris.core.exception.throwDebrisException
-import co.ab180.debris.core.module.Module
+import non_official.pokeum.debris.core.definition.DebrisDefinition
+import non_official.pokeum.debris.core.definition.DebrisProperties
+import non_official.pokeum.debris.core.definition.IndexKey
+import non_official.pokeum.debris.core.exception.throwDebrisException
+import non_official.pokeum.debris.core.module.Module
 import kotlin.reflect.KClass
 
 class Debris {

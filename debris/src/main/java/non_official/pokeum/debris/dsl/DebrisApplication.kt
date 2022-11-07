@@ -1,6 +1,6 @@
-package co.ab180.debris.dsl
+package non_official.pokeum.debris.dsl
 
-import co.ab180.debris.core.DebrisApplication
+import non_official.pokeum.debris.core.DebrisApplication
 
 typealias DebrisAppDeclaration = DebrisApplication.() -> Unit
 

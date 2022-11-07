@@ -1,6 +1,6 @@
-package co.ab180.debris.core.definition
+package non_official.pokeum.debris.core.definition
 
-import co.ab180.debris.core.exception.throwDebrisException
+import non_official.pokeum.debris.core.exception.throwDebrisException
 import java.util.concurrent.ConcurrentHashMap
 
 class DebrisProperties(private val data: MutableMap<String, Any> = ConcurrentHashMap()) {

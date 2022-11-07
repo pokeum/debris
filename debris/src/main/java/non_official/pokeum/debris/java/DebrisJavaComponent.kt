@@ -1,7 +1,7 @@
-package co.ab180.debris.java
+package non_official.pokeum.debris.java
 
-import co.ab180.debris.core.Debris
-import co.ab180.debris.core.DebrisContext
+import non_official.pokeum.debris.core.Debris
+import non_official.pokeum.debris.core.DebrisContext
 
 object DebrisJavaComponent {
 
