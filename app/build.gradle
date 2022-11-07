@@ -34,8 +34,10 @@ android {
 
 dependencies {
 
-    implementation project(":airbridge")
+    /* Debris */
+    implementation project(":debris")
 
+    /* Koin */
     def koin_version = "2.2.2"
     implementation("io.insert-koin:koin-core:$koin_version")
     testImplementation("io.insert-koin:koin-test:$koin_version")

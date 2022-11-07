@@ -1,4 +1,3 @@
 rootProject.name = "Dependency Injection"
 include ':app'
 include ':debris'
-include ':airbridge'
