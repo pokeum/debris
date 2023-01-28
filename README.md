@@ -139,7 +139,7 @@ startDebris {               // this: DebrisApplication
   
     Here is how we can write our Tracker to retrieve instances from Debris container.
         
-    Use get() & by inject() to inject Deeplinker instance
+    Use `get()` & `by inject()` to inject Deeplinker instance
 
     ```kotlin
     class Tracker {
