@@ -6,6 +6,7 @@ import kotlin.reflect.KClass
 data class DebrisDefinition<T>(
     val primaryType: KClass<*>,
     val definition: Definition<T>,
+    var secondaryTypes: List<KClass<*>> = listOf(),
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

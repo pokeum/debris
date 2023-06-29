@@ -13,6 +13,7 @@ class Debris {
     private val definitions = HashMap<IndexKey, DebrisDefinition<*>>()
 
     inline fun <reified T : Any> get(): T { return resolveInstance(T::class) }
+    inline fun <reified T : Any> getAll(): List<T> { return getAll(T::class) }
 
     @JvmOverloads
     fun <T : Any> get(clazz: Class<T>): T {
@@ -46,5 +47,13 @@ class Debris {
         }
         val indexKey: IndexKey = definition.primaryType.qualifiedName ?: ""
         if (indexKey.isNotEmpty()) { definitions[indexKey] = definition }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> getAll(clazz: KClass<*>): List<T> {
+        val definitions = definitions.values.toSet()
+        return definitions
+            .filter { definition -> definition.secondaryTypes.contains(clazz) }
+            .mapNotNull { get(it.primaryType.java) as T }
     }
 }
