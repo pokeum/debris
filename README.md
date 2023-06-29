@@ -38,7 +38,7 @@ limitations under the License.
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
   - [Start Debris](#start-debris)
-  - [Debris Component (Java)](#debris-component)
+  - [Debris Component](#debris-component)
   - [Resolving instance from Debris](#resolving-instance-from-debris)
   - [Passing Parameters - Injected Parameters](#passing-parameters)
   - [Injecting in Tests](#injecting-in-tests)
@@ -106,7 +106,7 @@ startDebris {               // this: DebrisApplication
 
     </details>
 
-* ## <a id="debris-component"> Debris Component (Java)
+* ## <a id="debris-component"> Debris Component
 
     Debris components helps to retrieve our instances outside of the container. Let's take an example.
     
