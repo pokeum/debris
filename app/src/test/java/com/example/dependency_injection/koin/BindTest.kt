@@ -1,10 +1,10 @@
-package non_official.pokeum.debris.core
+package com.example.dependency_injection.koin
 
-import non_official.pokeum.debris.dsl.binds
-import non_official.pokeum.debris.dsl.debrisApplication
-import non_official.pokeum.debris.dsl.module
-import org.junit.Assert.assertThrows
+import org.junit.Assert
 import org.junit.Test
+import org.koin.dsl.binds
+import org.koin.dsl.koinApplication
+import org.koin.dsl.module
 import java.io.Closeable
 
 interface ComponentInterface1: Closeable
@@ -18,8 +18,8 @@ class Component3: ComponentInterface3 { fun close() { println("Component3 - clos
 class BindTest {
 
     @Test
-    fun `debris bind test - success`() {
-        val app = debrisApplication {
+    fun `koin bind test - success`() {
+        val app = koinApplication {
             modules(
                 module {
                     single<ComponentInterface1> { Component1() } binds arrayOf(Closeable::class)
@@ -29,12 +29,12 @@ class BindTest {
             )
         }
 
-        app.debris.getAll<Closeable>().forEach { it.close() }
+        app.koin.getAll<Closeable>().forEach { it.close() }
     }
 
     @Test
-    fun `debris bind test - fail`() {
-        val app = debrisApplication {
+    fun `koin bind test - fail`() {
+        val app = koinApplication {
             modules(
                 module {
                     single<ComponentInterface1> { Component1() } binds arrayOf(Closeable::class)
@@ -44,8 +44,8 @@ class BindTest {
             )
         }
 
-        val exception: Exception = assertThrows(ClassCastException::class.java) {
-            app.debris.getAll<Closeable>().forEach { it.close() }
+        val exception: Exception = Assert.assertThrows(ClassCastException::class.java) {
+            app.koin.getAll<Closeable>().forEach { it.close() }
         }
         print("[Exception] ${exception.message}")
     }

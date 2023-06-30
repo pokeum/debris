@@ -1,6 +1,7 @@
 package non_official.pokeum.debris.core
 
 import non_official.pokeum.debris.core.exception.throwDebrisException
+import non_official.pokeum.debris.core.module.Module
 import non_official.pokeum.debris.dsl.DebrisAppDeclaration
 
 object DebrisContext {
@@ -37,5 +38,33 @@ object DebrisContext {
         register(debrisApplication)
         appDeclaration(debrisApplication)
         return debrisApplication
+    }
+
+    /**
+     * load Koin module in global Koin context
+     */
+    fun loadKoinModules(module: Module) = synchronized(this) {
+        get().loadModules(listOf(module))
+    }
+
+    /**
+     * load Koin module in global Koin context
+     */
+    fun loadKoinModules(modules: List<Module>) = synchronized(this) {
+        get().loadModules(modules)
+    }
+
+    /**
+     * unload Koin modules from global Koin context
+     */
+    internal fun unloadKoinModules(module: Module) = synchronized(this) {
+        get().unloadModules(listOf(module))
+    }
+
+    /**
+     * unload Koin modules from global Koin context
+     */
+    internal fun unloadKoinModules(modules: List<Module>) = synchronized(this) {
+        get().unloadModules(modules)
     }
 }

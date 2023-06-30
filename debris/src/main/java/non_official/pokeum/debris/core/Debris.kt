@@ -49,6 +49,17 @@ class Debris {
         if (indexKey.isNotEmpty()) { definitions[indexKey] = definition }
     }
 
+    internal fun unloadModules(modules: Iterable<Module>) { modules.forEach { unloadModules(it) } }
+
+    private fun unloadModules(module: Module) {
+        module.definitions.forEach { definition ->
+            val indexKey: IndexKey = definition.primaryType.qualifiedName ?: ""
+            properties.remove(indexKey)
+            definitions.remove(indexKey)
+        }
+        //module.isLoaded = false
+    }
+
     @Suppress("UNCHECKED_CAST")
     fun <T : Any> getAll(clazz: KClass<*>): List<T> {
         val definitions = definitions.values.toSet()
