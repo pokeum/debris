@@ -34,7 +34,16 @@ class Debris {
     }
 
     internal fun loadModules(modules: Iterable<Module>) {
-        modules.forEach { module -> declareDebrisDefinitions(module.definitions) }
+        modules.forEach { module ->
+            if (!module.isLoaded) {
+                loadModule(module)
+            } else { throwDebrisException("module '$module' already loaded!") }
+        }
+    }
+
+    private fun loadModule(module: Module) {
+        declareDebrisDefinitions(module.definitions)
+        module.isLoaded = true
     }
 
     private fun declareDebrisDefinitions(definitions: HashSet<DebrisDefinition<*>>) {
@@ -49,15 +58,15 @@ class Debris {
         if (indexKey.isNotEmpty()) { definitions[indexKey] = definition }
     }
 
-    internal fun unloadModules(modules: Iterable<Module>) { modules.forEach { unloadModules(it) } }
+    internal fun unloadModules(modules: Iterable<Module>) { modules.forEach { unloadModule(it) } }
 
-    private fun unloadModules(module: Module) {
+    private fun unloadModule(module: Module) {
         module.definitions.forEach { definition ->
             val indexKey: IndexKey = definition.primaryType.qualifiedName ?: ""
             properties.remove(indexKey)
             definitions.remove(indexKey)
         }
-        //module.isLoaded = false
+        module.isLoaded = false
     }
 
     @Suppress("UNCHECKED_CAST")

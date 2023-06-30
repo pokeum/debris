@@ -9,6 +9,8 @@ class Module {
 
     // [@PublishedApi] https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-published-api/
     @PublishedApi
+    internal var isLoaded: Boolean = false
+    @PublishedApi
     internal val definitions = hashSetOf<DebrisDefinition<*>>()
 
     inline fun <reified T> single(
